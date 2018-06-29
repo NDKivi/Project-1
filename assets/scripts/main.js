@@ -15,13 +15,11 @@ $(document).ready(function () {
             started = false;
         } else {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function () {
-                    watchObject = navigator.geolocation.watchPosition(function (position) {
-                        coordinates.push({ "latitude": position.coords.latitude, "longitude": position.coords.longitude, "time": moment()});
-                        started = true;
-                    });
+                watchObject = navigator.geolocation.watchPosition(function (position) {
+                    coordinates.push({ "latitude": position.coords.latitude, "longitude": position.coords.longitude, "time": moment() });
+                    started = true;
                 });
-            } 
+            }
         }
     });
 });

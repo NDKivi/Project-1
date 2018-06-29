@@ -1,4 +1,4 @@
-var APIKeyWeather = config.weatherKey
+var APIKeyWeather = config.weatherKey;
 var lat = 44.95;
 var lon = -93.09;
 
