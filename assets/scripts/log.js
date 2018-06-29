@@ -33,7 +33,7 @@ $("#missed").on("click", function(){
 let api = config.logKey
 
   // Initialize Firebase
-  var config = {
+  var firebaseConfig = {
     apiKey: api,
     authDomain: "running-log-e72ee.firebaseapp.com",
     databaseURL: "https://running-log-e72ee.firebaseio.com",
@@ -41,7 +41,7 @@ let api = config.logKey
     storageBucket: "running-log-e72ee.appspot.com",
     messagingSenderId: "965231240004"
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
