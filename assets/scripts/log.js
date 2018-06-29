@@ -56,18 +56,26 @@ $("#add-Run-btn").on("click", function(event) {
   var temperature = $("#Temperature-input").val().trim();
 //   console.log(temperature);
   var time = moment($("#time-input").val().trim(), "HH:mm.ss").format("HH:mm.ss");
-
-  var mins = moment($("#time-input").val().trim(), "mm.ss").format("mm.ss");
-  var hrMin = moment(parseInt(time)).hours();
-  console.log(hrMin)
-  
-  var minTot = hrMin*60 + mins
   console.log(time);
+  var secs = moment(time, "HH:mm.ss").format("ss");
+  var mins = moment(time, "HH:mm.ss").format("mm");
+  var secFrac = parseInt(secs)/60;
+  console.log(secFrac);
+  var hrs = moment(time, "HH:mm.ss").format("HH");
+  var hrMin = parseInt(hrs)*60;
+  var allMin = parseInt(secFrac) + parseInt(mins) + parseInt(hrMin);
   console.log(mins);
+  console.log(hrs);
+  console.log(allMin);
+
+
+
+  
+
   
   var distance = $("#dist-input").val().trim();
-  console.log(distance);
-  var pace = (parseInt(minTot) / parseInt(distance)*60);
+  // console.log(distance);
+  var pace = (parseInt(distance) / parseInt(allMin)*60).toFixed(2);
   console.log(pace);
   //need var rate = distance/time
 
@@ -79,7 +87,8 @@ $("#add-Run-btn").on("click", function(event) {
     runDate: runDate,
     runTemp: temperature,
     duration: time,
-    dist: distance
+    dist: distance,
+    pace: pace,
     //rate: dist/time
   };
 
@@ -111,6 +120,7 @@ database.ref().on("child_added", function(childSnapshot) {
   var temperature = childSnapshot.val().runTemp;
   var time = childSnapshot.val().duration;
   var distance = childSnapshot.val().dist;
+  var pace = childSnapshot.val().pace;
 
 
 //   Run Info
@@ -125,6 +135,7 @@ database.ref().on("child_added", function(childSnapshot) {
     $("<td>").text(temperature),
     $("<td>").text(distance),
     $("<td>").text(time),
+    $("<td>").text(pace),
    
   );
 
