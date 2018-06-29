@@ -1,0 +1,10 @@
+.container {
+    border: 1px solid black;
+    height: 200px;
+    width: 50%;
+    background-color: powderblue;
+}
+
+#display {
+    padding-top: 10px;
+}
