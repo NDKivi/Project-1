@@ -8,10 +8,84 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+  
+    <!-- Moment.js Reference -->
     <script src="assets/scripts/config.js"></script>
+    <script src="assets/scripts/log.js"></script>
     <script src="assets/scripts/weather.js"></script>
 </head>
 <body>
+    <button id="logBtn">Running Log</button>
+<div id="log" data-state="hide" class="container">
+
+        <!-- Jumbotron -->
+        
+        <div class="jumbotron" style="background-color: blue; color: white">
+          <h1 class="text-center">Running Log</h1>
+        </div>
+            <div class="row">
+                    <button id="missed">Add Missed</button>
     
+                  <div class="col-md-12">
+    
+                    <!-- Current Runs-->
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <h3 class="card-title">Recent Runs</h3>
+                        <table class="table table-sm table-hover" id='Run-table'>
+                          <thead>
+                            <tr>
+                              <th scope="col">Date</th>
+                              <th scope="col">Temperature</th>
+                              <th scope="col">Distance</th>
+                              <th scope="col">Duration</th>
+                              <th scope="col">Pace</th>
+                            </tr>
+                          </thead>
+                          <tbody id="RunBody">
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <div id="addMiss" data-state="hide" class="row">
+                <div class="col-md-12">
+                  <!-- Add Run  -->
+                  <div class="card mb-4 p-4">
+                    <div class="card-body">
+                      <h3 class="card-title">Log Missed Runs</h3>
+                      <!-- Entry Form -->
+                      <form>
+                        <div class="form-group row">
+                          <label for="Date-input">Date</label>
+                          <input class="form-control" id="Date-input" placeholder="MM/DD/YY" type="text">
+                        </div>
+                        <div class="form-group row">
+                          <label for="Temperature-input">Temperature</label>
+                          <input class="form-control" id="Temperature-input" placeholder="72" type="text">
+                        </div>
+                        <div class="form-group row">
+                          <label for="time-input">Time (HH:MM.SS)</label>
+                          <input class="form-control" id="time-input" placeholder="00:43.26" type="text">
+                        </div>
+                        <div class="form-group row">
+                          <label for="dist-input">Distance (Milage)</label>
+                          <input class="form-control" id="dist-input" placeholder="1.2" type="text">
+                        </div>
+                        <button class="btn btn-primary float-right" id="add-Run-btn">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
 </body>
 </html>
