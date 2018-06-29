@@ -86,7 +86,19 @@ $(document).ready(function(){
         //change state
         $("#reset").attr("data-state", "hide");
     }
+    if ($("#saveLog").attr("data-state") === "hide"){
+ 
+        $("#saveLog").hide();
+        //change state
+        $("#saveLog").attr("data-state", "show");
+        }    else{
+     
+            $("#saveLog").show();
+            //change state
+            $("#saveLog").attr("data-state", "hide");
+        }
 })
+
  });
 
 
