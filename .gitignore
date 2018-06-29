@@ -62,3 +62,6 @@ typings/
 
 # Don't include mac garbage
 .DS_Store
+
+# Don't share our API keys and stuff
+config.js

@@ -1,9 +1,9 @@
-var APIKey = "b5751f2e126334cf4d3478c0bb6d23f2";
+var APIKeyWeather = config.weatherKey
 var lat = 44.95;
 var lon = -93.09;
 
 //current conditions
-var queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
+var queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
 console.log(queryUrlCurrent);
 
 $.ajax({
@@ -23,7 +23,7 @@ $.ajax({
 });
 
 //future conditions
-var queryUrlFuture = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
+var queryUrlFuture = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
 console.log(queryUrlFuture);
 
 $.ajax({
