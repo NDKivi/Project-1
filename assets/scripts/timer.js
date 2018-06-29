@@ -19,7 +19,7 @@ var stopwatch = {
         // reset timer
         stopwatch.time = 0;
 
-        $("#display").text("00:00");
+        $("#display").text("00:00:00");
 
     },
 
@@ -50,9 +50,9 @@ var stopwatch = {
     },
     timeConverter: function (t) {
 
-
-        var minutes = Math.floor(t / 60);
-        var seconds = t - (minutes * 60);
+        var hours = Math.floor(t / 3600);
+        var minutes = Math.floor(t % 3600 / 60);
+        var seconds = Math.floor(t % 3600 % 60);
 
         if (seconds < 10) {
             seconds = "0" + seconds;
@@ -61,12 +61,15 @@ var stopwatch = {
         if (minutes === 0) {
             minutes = "00";
         }
+        if (hours === 0) {
+            hours = "00";
+        }
 
         else if (minutes < 10) {
             minutes = "0" + minutes;
         }
 
-        return minutes + ":" + seconds;
+        return hours + ":" + minutes + ":" + seconds;
     }
 };
 

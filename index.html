@@ -18,10 +18,35 @@
   <script src="assets/scripts/log.js"></script>
   <script src="assets/scripts/weather.js"></script>
   <script src="assets/scripts/main.js"></script>
+   <script src="assets/scrpits/timer.js"></script>
 </head>
 
 
 <body>
+    <div id="wrapper">
+
+        <div class="container">
+            <div id="display">00:00:00</div>
+            <br>
+            <br>
+
+            <div id="buttons">
+                <button id="pause">Start/Pause</button>
+
+                <button id="reset" data-state="hide">Reset</button>
+
+            </div>
+            <br>
+            <br>
+
+            <div id="buttons">
+                <button id="saveLog" data-state="hide">SAVE</button>
+
+            </div>
+        </div>
+    </div>
+
+
   <button id="logBtn">Running Log</button>
   <div id="log" data-state="hide" class="container">
 
