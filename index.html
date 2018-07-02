@@ -25,30 +25,31 @@
 <body>
   <div id="wrapper">
 
-    <div class="container">
-      <div id="display">00:00:00</div>
-      <div id="current-distance">0 mi</div>
-      <br>
+    <div class="container1">
+      <div id="timeAndDist">
+        <div id="display" class="text-center">00:00:00</div>
+        <div id="current-distance" class="text-center">0 mi</div>
+      </div>
       <br>
 
       <div id="buttons">
-        <button id="pause">Start/Pause</button>
+        <button id="pause" class="btn btn-success">Start/Pause</button>
 
-        <button id="reset" data-state="hide">Reset</button>
+        <button id="reset" class="btn btn-danger" data-state="hide">Reset</button>
 
       </div>
       <br>
-      <br>
+    
 
       <div id="buttons">
-        <button id="saveLog" data-state="hide">SAVE</button>
+        <button id="saveLog" class="btn btn-warning" data-state="hide">SAVE</button>
 
       </div>
     </div>
   </div>
 
   <!-- weather -->
-  <div class="container">
+  <div class="container2">
     <!-- location and nowtime -->
     <div class="row">
       <div class="col-md-12" id="city-time">
@@ -68,7 +69,7 @@
   </div>
 
   <button id="logBtn">Running Log</button>
-  <div id="log" data-state="hide" class="container">
+  <div id="log" data-state="hide" class="container3">
 
     <!-- Jumbotron -->
     <div class="jumbotron" style="background-color: blue; color: white">
