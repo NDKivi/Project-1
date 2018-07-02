@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css" />
   <script src="assets/scripts/config.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,8 +24,13 @@
 
 
 <body>
+
   <div id="wrapper">
 
+
+    <div class="jumbotron m-0" style="background-color: blue; color: white">
+      <h1 class="text-center">OUR TITTLE</h1>
+    </div>
     <div class="container1">
       <div id="timeAndDist">
         <div id="display" class="text-center">00:00:00</div>
@@ -44,31 +50,33 @@
       <div id="buttons" align="middle">
         <button id="saveLog" class="btn btn-warning" data-state="hide">SAVE</button>
 
+        <button id="logBtn" class="btn btn-info">Running Log</button>
+
       </div>
     </div>
+
+
+    <!-- weather -->
+    <div class="container2">
+      <!-- location and nowtime -->
+      <div class="row">
+        <div class="col-md-12" id="city-time">
+
+        </div>
+      </div>
+      <div class="row">
+        <!-- current weather -->
+        <div class="col-md-6" id="current-forecast">
+
+        </div>
+        <!-- ~3hr weather forecast -->
+        <div class="col-md-6" id="future-forecast">
+
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <!-- weather -->
-  <div class="container2">
-    <!-- location and nowtime -->
-    <div class="row">
-      <div class="col-md-12" id="city-time">
-
-      </div>
-    </div>
-    <div class="row">
-      <!-- current weather -->
-      <div class="col-md-6" id="current-forecast">
-
-      </div>
-      <!-- ~3hr weather forecast -->
-      <div class="col-md-6" id="future-forecast">
-
-      </div>
-    </div>
-  </div>
-
-  <button id="logBtn">Running Log</button>
   <div id="log" data-state="hide" class="container3">
 
     <!-- Jumbotron -->
@@ -78,7 +86,7 @@
     <div class="row">
 
       <div class="col-md-12">
-        <button id="missed">Add Missed</button>
+
         <!-- Current Runs-->
         <div class="card mb-4">
           <div class="card-body">
@@ -98,6 +106,11 @@
               <tbody id="RunBody">
               </tbody>
             </table>
+          </div>
+        </div>
+        <div class="row" align="middle">
+          <div class="col-md-12">
+            <button id="missed" class="btn btn-info" align="middle">Add Missed</button>
           </div>
         </div>
       </div>
@@ -127,13 +140,13 @@
                 <input class="form-control" id="dist-input" placeholder="1.2" type="text">
               </div>
               <div class="form-group row">
-                  <label for="dist-input">Humidity</label>
-                  <input class="form-control" id="dist-input" placeholder="1.2" type="text">
-                </div>
-                <div class="form-group row">
-                    <label for="dist-input">Conditions</label>
-                    <input class="form-control" id="dist-input" placeholder="1.2" type="text">
-                  </div>
+                <label for="dist-input">Humidity</label>
+                <input class="form-control" id="dist-input" placeholder="48%" type="text">
+              </div>
+              <div class="form-group row">
+                <label for="dist-input">Conditions</label>
+                <input class="form-control" id="dist-input" placeholder="Clear Sky" type="text">
+              </div>
 
               <button class="btn btn-primary float-right" id="add-Run-btn">Submit</button>
             </form>
@@ -142,10 +155,7 @@
       </div>
     </div>
   </div>
-  <div id="test-geolocation">
-    <button id="get-location">Start/Stop Geoloc</button>
-    <div id="geolocation-output"></div>
-  </div>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
