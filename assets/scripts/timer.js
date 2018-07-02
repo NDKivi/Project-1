@@ -7,7 +7,7 @@ window.onload = function () {
 
 };
 
-
+let currentTime
 var intervalId;
 
 var clockRunning = false;
@@ -45,7 +45,7 @@ var stopwatch = {
 
         stopwatch.time++;
 
-        let currentTime = stopwatch.timeConverter(stopwatch.time);
+        currentTime = stopwatch.timeConverter(stopwatch.time);
         console.log("tick:", currentTime);
 
         $("#display").html(currentTime)
