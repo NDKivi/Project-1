@@ -1,3 +1,7 @@
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .container1 {
     border: 1px solid black;
     height: 300px;
@@ -24,6 +28,7 @@
 }
 form, tr {
     margin-left: 20px;
+    font-size: 18px;
 }
 
 .card-title {
