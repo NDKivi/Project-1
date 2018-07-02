@@ -29,10 +29,12 @@ var stopwatch = {
         if (!clockRunning) {
             clockRunning = true;
             intervalId = setInterval(stopwatch.count, 1000);
+            startGPS();
 
         } else {
             clearInterval(intervalId);
-            clockRunning = false
+            clockRunning = false;
+            stopGPS();
         };
 
     },
