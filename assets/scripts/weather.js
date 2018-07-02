@@ -5,7 +5,12 @@ var lon = -93.09;
 //current conditions
 var queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
 
+let cityName;
+let nowTime;
+let currentForecastTime;
 let currentTemp;
+let currentHumidity;
+let currentConditions;
 
 function getWeather() {
     $.ajax({
@@ -15,7 +20,7 @@ function getWeather() {
         console.log(response);
         console.log("Location: " + response.name);
         console.log("Current Time: " + moment().format("LT"));
-        let forecastTime = moment.unix(response.dt).format("LT");
+        currentForecastTime = moment.unix(response.dt).format("LT");
         console.log("Weather as of " + forecastTime);
         console.log("Temp: " + response.main.temp + "F");
         console.log("Humidity: " + response.main.humidity + "%");
@@ -23,13 +28,13 @@ function getWeather() {
         console.log("General Conditions: " + response.weather[0].main);
         console.log("More Detailed Conditions: " + response.weather[0].description);
 
-        let location = response.name;
-        let currentTime = moment().format("LT");
+        cityName = response.name;
+        nowTime = moment().format("LT");
         currentTemp = response.main.temp;
-        let humidity = response.main.humidity;
+        currentHumidity = response.main.humidity;
         let windSpeed = response.wind.speed;
         let genConditions = response.weather[0].main;
-        let detConditions = response.weather[0].description;
+        currentConditions = response.weather[0].description;
 
         //update html
         //make funcitont o get weather and then callback when want it to run (load: update html, stop clicked: send to firebase)
