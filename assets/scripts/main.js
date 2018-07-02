@@ -33,6 +33,7 @@ let watchObject;
 // });
 // End testing stuff
 
+/* bad name since not actually a get function */
 function getCoordinates() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -40,6 +41,8 @@ function getCoordinates() {
                 "latitude": position.coords.latitude,
                 "longitude": position.coords.longitude
             };
+            getWeather();
+            getForecast();
         });
     }
 }
@@ -55,7 +58,12 @@ function startGPS() {
 
 /* Clear the watch function to stop recording coordinates */
 function stopGPS() {
+    coordinates[coordinates.length - 1].endOfPath = true;
     navigator.geolocation.clearWatch(watchObject);
+}
+
+function resetGPS() {
+    coordinates = [];
 }
 
 /* Returns current distance of the path in Miles with two decimal places */

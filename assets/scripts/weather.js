@@ -3,8 +3,8 @@ $(document).ready(function () {
     getCoordinates();
 
     let APIKeyWeather = config.weatherKey;
-    let lat = coordinatesOnLoad.latitude; //44.95; coordinatesOnLoad.latitude;
-    let lon = coordinatesOnLoad.longitude; //-93.09; coordinatesOnLoad.longitude;
+    let lat = 30.95; 
+    let lon = -80.09; coordinatesOnLoad.longitude; //; coordinatesOnLoad.longitude;
 
     //current conditions
     var queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
@@ -18,6 +18,9 @@ $(document).ready(function () {
     let date;
 
     function getWeather() {
+        lat = coordinatesOnLoad.latitude;
+        lon = coordinatesOnLoad.longitude;
+        queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
         $.ajax({
             url: queryUrlCurrent,
             method: "GET"
@@ -76,7 +79,7 @@ $(document).ready(function () {
             //make funcitont o get weather and then callback when want it to run (load: update html, stop clicked: send to firebase)
         });
     };
-    getWeather();
+    // getWeather();
 
     let futureTime;
     let futureTemp;
@@ -133,6 +136,6 @@ $(document).ready(function () {
 
         });
     };
-    getForecast();
+    // getForecast();
 
 })
