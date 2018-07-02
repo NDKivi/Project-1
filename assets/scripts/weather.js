@@ -1,17 +1,17 @@
 $(document).ready(function () {
 
-    // getCoordinates();
-    getWeather();
-    getForecast();
+    getCoordinates();
+    // getWeather();
+    // getForecast();
 
 })
 
 let APIKeyWeather = config.weatherKey;
-let lat = 44.95;//44.95; //coordinatesOnLoad.latitude;
-let lon = -93.09;//-93.09; //coordinatesOnLoad.longitude;
+// let lat = coordinatesOnLoad.latitude;//44.95; //coordinatesOnLoad.latitude;
+// let lon = coordinatesOnLoad.longitude;//-93.09; //coordinatesOnLoad.longitude;
 
-//current conditions
-let queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
+// //current conditions
+// let queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
 
 let cityName;
 let nowTime;
@@ -21,9 +21,6 @@ let currentHumidity;
 let currentConditions;
 let date;
 
-//future conditions
-let queryUrlFuture = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
-
 let futureTime;
 let futureTemp;
 let futureHumidity;
@@ -31,6 +28,12 @@ let futureConditions;
 
 
 function getWeather() {
+    let lat = coordinatesOnLoad.latitude;//44.95; //coordinatesOnLoad.latitude;
+    let lon = coordinatesOnLoad.longitude;//-93.09; //coordinatesOnLoad.longitude;
+
+    //current conditions
+    let queryUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
+
     $.ajax({
         url: queryUrlCurrent,
         method: "GET"
@@ -91,6 +94,13 @@ function getWeather() {
 };
 
 function getForecast() {
+    let lat = coordinatesOnLoad.latitude;//44.95; //coordinatesOnLoad.latitude;
+    let lon = coordinatesOnLoad.longitude;//-93.09; //coordinatesOnLoad.longitude;
+
+    //future conditions
+let queryUrlFuture = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKeyWeather;
+
+
     $.ajax({
         url: queryUrlFuture,
         method: "GET"
