@@ -2,7 +2,12 @@
 //                 used to calculate the distance traveled
 let coordinates = [];
 
-// Floating point: number to keep track of precise total distance
+// Floating point: number to keep track of the total distance
+//         that is incremented when clicking the stop button
+//         While the stopwatch is running, the current distance 
+//         is still calculated dynamically by finding the sum 
+//         of this number and the length of the current coordinates
+//         array.
 let distanceInMiles = 0.0;
 
 // Object: Coordinates generated on page load so we can get the weather
@@ -32,7 +37,7 @@ function startGPS() {
     watchObject = navigator.geolocation.watchPosition(function (position) {
         coordinates.push({ "latitude": position.coords.latitude, "longitude": position.coords.longitude, "time": moment() });
         displayDistance();
-    }, function () {}, {enableHighAccuracy: true});
+    }, function () { }, { enableHighAccuracy: true });
 }
 
 /* Clear the watch function to stop recording coordinates */
@@ -46,9 +51,13 @@ function resetDistance() {
     distanceInMiles = 0.0;
 }
 
-/* Returns current distance of the path in Miles with two decimal places */
+/* Returns a string with the current distance of the entire run in Miles with two decimal places */
 function getDistance() {
-    return distanceInMiles.toFixed(2);
+    if (watchObject) {
+        return (distanceInMiles + (geolib.getPathLength(coordinates) * 0.00062137)).toFixed(2);
+    } else {
+        return distanceInMiles.toFixed(2);
+    }
 }
 
 function displayDistance() {
