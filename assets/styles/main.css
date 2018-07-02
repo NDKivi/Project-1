@@ -6,7 +6,7 @@
 }
 .container2 {
     border: 1px solid black;
-    height: 300px;
+    
     width: 100%;
     background-color: skyblue;
 }
@@ -21,4 +21,12 @@
     border: 1px solid black;
     width: 100%;
     background-color: rgba(123, 158, 211, 0.597);
+}
+form, tr {
+    margin-left: 20px;
+}
+
+.card-title {
+    margin-left: 20px;
+    font-weight: bold;
 }
