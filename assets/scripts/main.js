@@ -1,5 +1,6 @@
 // Array of coordinates
 let coordinates = [];
+let coordinatesOnLoad;
 let watchObject;
 
 // Start testing stuff
@@ -31,6 +32,18 @@ let watchObject;
 //     });
 // });
 // End testing stuff
+
+function getCoordinates() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            coordinatesOnLoad = {
+                "latitude": position.coords.latitude,
+                "longitude": position.coords.longitude
+            };
+        });
+    }
+}
+
 
 /* Starts the watch to record coordinates in the coordinates array */
 function startGPS() {
