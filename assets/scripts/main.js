@@ -45,11 +45,11 @@ function stopGPS() {
     navigator.geolocation.clearWatch(watchObject);
 }
 
-/* Returns current distance of the path in Miles */
+/* Returns current distance of the path in Miles with two decimal places */
 function getDistance() {
-    return (geolib.getPathLength(coordinates) * 0.00062137);
+    return (geolib.getPathLength(coordinates) * 0.00062137).toFixed(2);
 }
 
 function displayDistance() {
-    $("#current-distance").text(getDistance());
+    $("#current-distance").text(getDistance() + " mi");
 }
