@@ -32,16 +32,16 @@
       </div>
       <br>
 
-      <div id="buttons">
+      <div id="buttons" align="middle">
         <button id="pause" class="btn btn-success">Start/Pause</button>
 
         <button id="reset" class="btn btn-danger" data-state="hide">Reset</button>
 
       </div>
       <br>
-    
 
-      <div id="buttons">
+
+      <div id="buttons" align="middle">
         <button id="saveLog" class="btn btn-warning" data-state="hide">SAVE</button>
 
       </div>
@@ -76,10 +76,9 @@
       <h1 class="text-center">Running Log</h1>
     </div>
     <div class="row">
-      <button id="missed">Add Missed</button>
 
       <div class="col-md-12">
-
+        <button id="missed">Add Missed</button>
         <!-- Current Runs-->
         <div class="card mb-4">
           <div class="card-body">
@@ -92,6 +91,8 @@
                   <th scope="col">Distance</th>
                   <th scope="col">Duration</th>
                   <th scope="col">Pace</th>
+                  <th scope="col">Humidity</th>
+                  <th scope="col">Conditions</th>
                 </tr>
               </thead>
               <tbody id="RunBody">
@@ -125,6 +126,15 @@
                 <label for="dist-input">Distance (Milage)</label>
                 <input class="form-control" id="dist-input" placeholder="1.2" type="text">
               </div>
+              <div class="form-group row">
+                  <label for="dist-input">Humidity</label>
+                  <input class="form-control" id="dist-input" placeholder="1.2" type="text">
+                </div>
+                <div class="form-group row">
+                    <label for="dist-input">Conditions</label>
+                    <input class="form-control" id="dist-input" placeholder="1.2" type="text">
+                  </div>
+
               <button class="btn btn-primary float-right" id="add-Run-btn">Submit</button>
             </form>
           </div>
