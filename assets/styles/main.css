@@ -36,3 +36,19 @@ form, tr {
     margin-left: 20px;
     font-weight: bold;
 }
+
+h1 {
+    font-family: 'Faster One', cursive;
+}
+
+#current-forecast {
+    border-style: solid; 
+}
+
+#future-forecast {
+    border-style: solid;
+}
+
+#city-time {
+    border-style: solid;
+}
