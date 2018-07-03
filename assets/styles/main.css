@@ -10,7 +10,7 @@ body {
 }
 .container2 {
     border: 1px solid black;
-    
+    font-family: 'Archivo Narrow', sans-serif;
     width: 100%;
     background-color: skyblue;
 }
@@ -29,6 +29,7 @@ body {
 form, tr {
     margin-left: 20px;
     font-size: 18px;
+    font-family: 'Archivo Narrow', sans-serif;
 }
 
 .card-title {
