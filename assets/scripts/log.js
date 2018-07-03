@@ -35,13 +35,14 @@ $("#missed").on("click", function(){
 window.setInterval(function(){
     // console.log("enter")
     var secs = moment(currentTime, "HH:mm.ss").format("ss");
-  var mins = parseInt(moment(currentTime, "HH:mm.ss").format("mm"));
-  var distCurrent = parseInt(getDistance());
+  var mins = parseFloat(moment(currentTime, "HH:mm.ss").format("mm"));
+  var distCurrent = parseFloat(getDistance());
+  console.log(distCurrent)
   // console.log(mins);
-  var secFrac = parseInt(secs)/60;
+  var secFrac = parseFloat(secs)/60;
   // console.log("secFrac", secFrac);
   var hrs = moment(currentTime, "HH:mm.ss").format("HH");
-  var hrMin = parseInt(hrs)*60;
+  var hrMin = parseFloat(hrs)*60;
   // console.log("hrmin", hrMin);
   var allMin = ((secFrac) +(mins) + (hrMin)).toFixed(2);
   // console.log("allmin", allMin)
@@ -113,11 +114,11 @@ var time = moment($("#time-input").val().trim(), "HH:mm.ss").format("HH:mm.ss");
 //then we can divide distance my minutes and multiply by 60 for Mi/HR
 var secs = moment(time, "HH:mm.ss").format("ss");
 var mins = moment(time, "HH:mm.ss").format("mm");
-var secFrac = parseInt(secs)/60;
+var secFrac = parseFloat(secs)/60;
 // console.log("secFrac manual", secFrac);
 var hrs = moment(time, "HH:mm.ss").format("HH");
-var hrMin = parseInt(hrs)*60;
-var allMin = (secFrac + parseInt(mins) + hrMin);
+var hrMin = parseFloat(hrs)*60;
+var allMin = (secFrac + parseFloat(mins) + hrMin);
 // console.log("manual mins", mins);
 // console.log("manual hrs", hrs);
 // console.log("manual allmins", allMin);
@@ -193,7 +194,7 @@ $("#saveLog").on("click", function(event) {
   // console.log(currentTemp);
   // console.log(currentHumidity);
   // console.log(currentConditions);
-  let distFinal = parseInt(getDistance());
+  let distFinal = parseFloat(getDistance());
 
   // let distFinal = "TBD"
   // console.log("dist", distFinal);
@@ -201,15 +202,15 @@ $("#saveLog").on("click", function(event) {
   // let pace = "TBD";
   // The pace formula is finicky with zeros in the minute column. likes to NaN.
   var secs = moment(currentTime, "HH:mm.ss").format("ss");
-  var mins = parseInt(moment(currentTime, "HH:mm.ss").format("mm"));
+  var mins = parseFloat(moment(currentTime, "HH:mm.ss").format("mm"));
 
   // console.log(mins);
-  var secFrac = (parseInt(secs)/60);
+  var secFrac = (parseFloat(secs)/60);
   // console.log("secFrac", secFrac);
   var hrs = moment(currentTime, "HH:mm.ss").format("HH");
-  var hrMin = parseInt(hrs)*60;
+  var hrMin = parseFloat(hrs)*60;
   // console.log("hrmin", hrMin);
-  var allMin = (secFrac + parseInt(mins) + hrMin)
+  var allMin = (secFrac + parseFloat(mins) + hrMin)
   // console.log("allMin", hrMin);
 
   var pace = ((distFinal/ allMin)*60).toFixed(2);
