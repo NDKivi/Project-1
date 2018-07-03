@@ -36,3 +36,7 @@ form, tr {
     margin-left: 20px;
     font-weight: bold;
 }
+
+h1 {
+    font-family: 'Faster One', cursive;
+}
