@@ -29,10 +29,12 @@ $("#missed").on("click", function(){
       $("#addMiss").attr("data-state", "hide");
   }
 });
-database.ref().on("child_added", function(childSnapshot) {
-// console.log(childSnapshot.val());
 
-//   // Store everything from response into variables.
+//Sets up the initial table of previous runs from Firebase
+database.ref().on("child_added", function(childSnapshot) {
+
+
+// Store everything from response into variables.
 var runDate = childSnapshot.val().runDate;
 var temperature = childSnapshot.val().runTemp;
 var time = childSnapshot.val().duration;
@@ -51,7 +53,7 @@ var newRow = $("<tr>").append(
   $("<td>").text(clouds),
 );
 
-//   // Append the new row to the table
+// Append the new row to the table
 $("#RunBody").append(newRow);
 
 })
@@ -71,7 +73,7 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-// 2. Button for adding Employees
+// 2. Button for adding runs
 $(document).ready(function(){
 $("#add-Run-btn").on("click", function(event) {
 event.preventDefault();
@@ -82,50 +84,35 @@ var runDate = $("#Date-input").val().trim();
 var temperature = $("#Temperature-input").val().trim();
 //   console.log(temperature);
 var time = moment($("#time-input").val().trim(), "HH:mm.ss").format("HH:mm.ss");
-console.log(time);
+console.log("time from manual log", time);
+//below is the pace variables.  We have to
+//take time and convert hrs and seconds to minutes
+//then we can divide distance my minutes and multiply by 60 for Mi/HR
 var secs = moment(time, "HH:mm.ss").format("ss");
 var mins = moment(time, "HH:mm.ss").format("mm");
 var secFrac = parseInt(secs)/60;
-console.log(secFrac);
+console.log("secFrac manual", secFrac);
 var hrs = moment(time, "HH:mm.ss").format("HH");
 var hrMin = parseInt(hrs)*60;
 var allMin = parseInt(secFrac) + parseInt(mins) + parseInt(hrMin);
-console.log(mins);
-console.log(hrs);
-console.log(allMin);
-
-
-
-
-
+console.log("manual mins", mins);
+console.log("manual hrs", hrs);
+console.log("manual allmins",allMin);
 
 var distance = $("#dist-input").val().trim();
 // console.log(distance);
 var pace = (parseInt(distance) / parseInt(allMin)*60).toFixed(2);
 console.log(pace);
-//need var rate = distance/time
-
-
-//var corrected = moment.unix(variable that is unix).format(format desired)
-
-// Creates local "temporary" object for holding employee data
+//this is the object to be pushed to firebase
 var newrun = {
   runDate: runDate,
   runTemp: temperature,
   duration: time,
   dist: distance,
   pace: pace,
-  //rate: dist/time
 };
-
-// Uploads employee data to the database
+// Uploads run data to the database
 database.ref().push(newrun);
-
-// Logs object properties to console
-// console.log(newrun.runDate);
-// console.log(newrun.runDate);
-// console.log(newrun.duration);
-// console.log(newrun.dist);
 
 alert("run successfully added");
 
@@ -134,28 +121,24 @@ $("#run-runDate-input").val("");
 $("#temperature-input").val("");
 $("#duration-input").val("");
 $("#dist-input").val("");
-
+//Hilariously, we need to empty the body of the table before we re-render
+//or the entries will duplicate.
 $("#RunBody").empty();
 
-// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+// 3. Create Firebase event for adding run to the database 
+// and a row in the html when a user adds an entry
+
 database.ref().on("child_added", function(childSnapshot) {
 // console.log(childSnapshot.val());
 
-//   // Store everything from response into variables.
+// Store everything from response into variables.
 var runDate = childSnapshot.val().runDate;
 var temperature = childSnapshot.val().runTemp;
 var time = childSnapshot.val().duration;
 var distance = childSnapshot.val().dist;
 var pace = childSnapshot.val().pace;
 
-
-//   Run Info
-//   console.log(runDate);
-//   console.log(temperature);
-//   console.log(time);
-//   console.log(distance);
-
-//   // Create the new row
+// Create the new row with each returned value
 var newRow = $("<tr>").append(
   $("<td>").text(runDate),
   $("<td>").text(temperature),
@@ -166,42 +149,61 @@ var newRow = $("<tr>").append(
   $("<td>").text(clouds),
  
 );
-
-//   // Append the new row to the table
+// Append the new row to the table
 $("#RunBody").append(newRow);
 });
 });
 })
+//This formula will control all data from the Save button
 $(document).ready(function(){
 $("#saveLog").on("click", function(event) {
   event.preventDefault();
-
+//all of these variables exist in the global scope elsewhere in the script files
+//for the timer, the temp and the distance
   console.log("clicked");
   console.log(currentTime);
   console.log(currentTemp);
   console.log(currentHumidity);
   console.log(currentConditions);
-  let distFinal = getDistance();
+  let distFinal = parseInt(getDistance());
   // let distFinal = "TBD"
-  // console.log(distFinal);
+  console.log("dist", distFinal);
   // console.log(date);
-  let pace = "TBD";
+  // let pace = "TBD";
+  // The pace formula is finicky with zeros in the minute column. likes to NaN.
+  var secs = moment(currentTime, "HH:mm.ss").format("ss");
+  var mins = parseInt(moment(currentTime, "HH:mm.ss").format("mm"));
 
-  var newrun = {
-    runDate: date,
-    runTemp: currentTemp,
-    duration: currentTime,
-    dist: distFinal,
-    pace: pace,
-    humid: currentHumidity,
-    clouds: currentConditions,
-  };
+  console.log(mins);
+  var secFrac = parseInt(secs)/60;
+  console.log("secFrac", secFrac);
+  var hrs = moment(currentTime, "HH:mm.ss").format("HH");
+  var hrMin = parseInt(hrs)*60;
+  console.log("hrmin", hrMin);
+  var allMin = ((secFrac) +(mins) + (hrMin)).toFixed(2);
+  var dubMin = parseInt(allMin).toFixed(2)
+
+  console.log("dubMin", dubMin);
+
+
+  var pace = (parseInt(distFinal) / (parseInt(dubMin))*60).toFixed(2);
+  console.log("pace", pace);
+
+    var newrun = {
+      runDate: date,
+      runTemp: currentTemp,
+      duration: currentTime,
+      dist: distFinal,
+      pace: pace,
+      humid: currentHumidity,
+      clouds: currentConditions,
+    };
   database.ref().push(newrun);
   $("#RunBody").empty();
   database.ref().on("child_added", function(childSnapshot) {
     // console.log(childSnapshot.val());
   
-  //   // Store everything from response into variables.
+  // Store everything from response into variables.
     var runDate = childSnapshot.val().runDate;
     var temperature = childSnapshot.val().runTemp;
     var time = childSnapshot.val().duration;
@@ -209,7 +211,7 @@ $("#saveLog").on("click", function(event) {
     var pace = childSnapshot.val().pace;
     var humid = childSnapshot.val().humid;
     var clouds = childSnapshot.val().clouds;
-
+    console.log("pace", pace)
     var newRow = $("<tr>").append(
       $("<td>").text(runDate),
       $("<td>").text(temperature),
@@ -220,7 +222,7 @@ $("#saveLog").on("click", function(event) {
       $("<td>").text(clouds),
     );
   
-  //   // Append the new row to the table
+  // Append the new row to the table
     $("#RunBody").append(newRow);
 
   })
