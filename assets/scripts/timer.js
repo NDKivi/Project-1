@@ -47,7 +47,7 @@ var stopwatch = {
         stopwatch.time++;
 
         currentTime = stopwatch.timeConverter(stopwatch.time);
-        console.log("tick:", currentTime);
+        
 
         $("#display").html(currentTime)
     },
