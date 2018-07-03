@@ -8,16 +8,24 @@ body {
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
+#title1 {
+    font-size: 120px;
+}
+
+#title2 {
+    font-size: 80px;
+}
+
 .container1 {
     border: 1px solid black;
     width: 100%;
-    background-color: powderblue;
+    
 }
 .container2 {
     border: 1px solid black;
     font-family: 'Archivo Narrow', sans-serif;
     width: 100%;
-    background-color: skyblue;
+   
 }
 
 #timeAndDist {
@@ -29,7 +37,7 @@ body {
 .container3 {
     border: 1px solid black;
     width: 100%;
-    background-color: rgba(123, 158, 211, 0.597);
+    
 }
 form, tr {
     margin-left: 20px;
@@ -44,6 +52,9 @@ form, tr {
 
 h1 {
     font-family: 'Faster One', cursive;
+}
+h3 {
+    font-size: 30px;
 }
 
 #current-forecast {
