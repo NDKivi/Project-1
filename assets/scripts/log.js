@@ -166,6 +166,7 @@ $("#saveLog").on("click", function(event) {
   console.log(currentHumidity);
   console.log(currentConditions);
   let distFinal = parseInt(getDistance());
+
   // let distFinal = "TBD"
   console.log("dist", distFinal);
   // console.log(date);
@@ -224,7 +225,7 @@ $("#saveLog").on("click", function(event) {
   
   // Append the new row to the table
     $("#RunBody").append(newRow);
-
+    stopwatch.reset();
   })
 })
 })

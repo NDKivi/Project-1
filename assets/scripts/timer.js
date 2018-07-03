@@ -20,7 +20,8 @@ var stopwatch = {
         stopwatch.time = 0;
 
         $("#display").text("00:00:00");
-
+        resetDistance();
+        displayDistance();
     },
 
     pause: function () {
