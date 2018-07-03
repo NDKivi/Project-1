@@ -52,3 +52,7 @@ h1 {
 #city-time {
     border-style: solid;
 }
+
+#buttons, #missed, #add-Run-btn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
