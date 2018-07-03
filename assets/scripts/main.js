@@ -35,6 +35,7 @@ function getCoordinates() {
 /* Starts the watch to record coordinates in the coordinates array */
 function startGPS() {
     watchObject = navigator.geolocation.watchPosition(function (position) {
+        console.log("Accuracy: " + position.coords.accuracy);
         coordinates.push({ "latitude": position.coords.latitude, "longitude": position.coords.longitude, "time": moment() });
         displayDistance();
     }, function () { }, { enableHighAccuracy: true });
