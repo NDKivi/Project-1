@@ -28,8 +28,30 @@ $("#missed").on("click", function(){
       //change state
       $("#addMiss").attr("data-state", "hide");
   }
+  
+ 
 });
+window.setInterval(function(){
+    console.log("enter")
+    var secs = moment(currentTime, "HH:mm.ss").format("ss");
+  var mins = parseInt(moment(currentTime, "HH:mm.ss").format("mm"));
+  var distCurrent = 10;
+  console.log(mins);
+  var secFrac = parseInt(secs)/60;
+  console.log("secFrac", secFrac);
+  var hrs = moment(currentTime, "HH:mm.ss").format("HH");
+  var hrMin = parseInt(hrs)*60;
+  console.log("hrmin", hrMin);
+  var allMin = ((secFrac) +(mins) + (hrMin)).toFixed(2);
+  console.log("allmin", allMin)
 
+
+
+  var pace = ((distCurrent) / ((allMin)/60)).toFixed(2);
+  console.log("pace to Display", pace);
+  $("#current-pace").text(pace + "mph");
+
+  }, 1000);
 //Sets up the initial table of previous runs from Firebase
 database.ref().on("child_added", function(childSnapshot) {
 
@@ -101,7 +123,7 @@ console.log("manual allmins",allMin);
 
 var distance = $("#dist-input").val().trim();
 // console.log(distance);
-var pace = (parseInt(distance) / parseInt(allMin)*60).toFixed(2);
+var pace = (parseInt(distance) / parseInt(allMin)/60).toFixed(2);
 console.log(pace);
 //this is the object to be pushed to firebase
 var newrun = {
@@ -186,7 +208,7 @@ $("#saveLog").on("click", function(event) {
   console.log("dubMin", dubMin);
 
 
-  var pace = (parseInt(distFinal) / (parseInt(dubMin))*60).toFixed(2);
+  var pace = (parseInt(distFinal) / (parseInt(allMin))/60).toFixed(2);
   console.log("pace", pace);
 
     var newrun = {
