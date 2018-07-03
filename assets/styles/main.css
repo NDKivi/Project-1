@@ -40,3 +40,15 @@ form, tr {
 h1 {
     font-family: 'Faster One', cursive;
 }
+
+#current-forecast {
+    border-style: solid; 
+}
+
+#future-forecast {
+    border-style: solid;
+}
+
+#city-time {
+    border-style: solid;
+}
