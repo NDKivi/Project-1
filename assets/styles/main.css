@@ -1,30 +1,43 @@
 * {
-    background-image: url("https://www.xmple.com/wallpaper/grey-highlight-black-gradient-linear-3840x2160-c2-000000-696969-l-67-a-0-f-21.svg");
-    color: aliceblue;
+    color: whitesmoke;
 }
 
 
 body {
     font-family: 'Archivo Narrow', sans-serif;
+    background: linear-gradient(0deg,rgba(201, 201, 201, 0.5),rgba(201, 201, 201, 0.5)), url("../images/bark.jpg");
+    
+}
+
+.container {
+    width: 100%;
+    height: auto;
+}
+
+#main-title {
+    background-image: url("../images/plaid.jpg");
+    background-size: auto 100%;
+}
+
+.pleasework {
+    background-image: url("../images/plaid.jpg");
+    background-size: auto 100%;
+}
+
+#log {
+    background: linear-gradient(0deg,rgba(201, 201, 201, 0.5),rgba(201, 201, 201, 0.5)), url("../images/bark.jpg");
 }
 
 #title1 {
-    font-size: 120px;
+    /* background-image: url("../images/plaid.jpg");
+    background-size: auto 100%; */
+    text-align: center;
 }
 
-#title2 {
-    font-size: 80px;
-}
-
-.container1 {
-    border: 1px solid black;
-    width: 100%;
-    
-}
 .container2 {
-    border: 1px solid black;
+    
     font-family: 'Archivo Narrow', sans-serif;
-    width: 100%;
+    /* width: 100%; */
    
 }
 
@@ -34,11 +47,6 @@ body {
     font-weight: bold;
 }
 
-.container3 {
-    border: 1px solid black;
-    width: 100%;
-    
-}
 form, tr {
     margin-left: 20px;
     font-size: 18px;
@@ -50,8 +58,39 @@ form, tr {
     font-weight: bold;
 }
 
+.card-body {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+    max-width: 15%;
+    margin: 1px;;
+}
+
+#image1 {
+    float: left;
+    margin-top: -.5em;
+    vertical-align: baseline;
+}
+
+#image2 {
+    float: right;
+    /* background-image: url("../images/plaid.jpg"); */
+    background-size: auto 100%;
+}
+
+#title2 {
+    float: right;
+    /* background-image: url("../images/plaid.jpg"); */
+    background-size: auto 100%;
+    font-size: 50px;
+}
+
 h1 {
     font-family: 'Faster One', cursive;
+    display: inline-block;
+    font-size: 40px;
 }
 h3 {
     font-size: 30px;
